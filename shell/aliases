@@ -1,0 +1,29 @@
+#startx alias
+[ -f "$XINITRC" ] && alias startx="startx $XINITRC"
+
+# Verbosity and quick actions
+alias v="$EDITOR"
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -iv"
+alias mkd="mkdir -pv"
+alias z="zathura"
+alias py="python -q"
+alias sx="sxiv -ft *"
+alias tsm="transmission-remote"
+
+# Colorize commands when possible.
+alias \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" 
+
+alias mbsync="mbsync -c ~/.config/isync/mbsyncrc"
+alias lf='lfub'
+alias p='cd -'
+
+# Git Aliases
+alias gs="git status"
+alias ga="git add"
+alias gl="git ls-files"
+alias gb="git branch"

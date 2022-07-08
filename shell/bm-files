@@ -1,0 +1,8 @@
+cbd ~/.config/shell/bm-dirs
+cbf ~/.config/shell/bm-files
+cfa ~/.config/shell/aliases
+csb ~/.config/dwmblocks/config.h
+czp ~/.config/shell/profile
+cas ~/.config/shell/aliases
+cfv ~/.config/nvim/init.vim
+cfz $ZDOTDIR/.zshrc

@@ -1,0 +1,11 @@
+h $HOME
+de ${XDG_DESKTOP_DIR:-$HOME/Desktop}
+dw ${XDG_DOWNLOAD_DIR:-$HOME/Downloads}
+dc ${XDG_DOCUMENTS_DIR:-$HOME/Documents}
+pi ${XDG_PICTURES_DIR:-$HOME/Pictures}
+vs ${XDG_VIDEOS_DIR:-$HOME/Videos}
+mu ${XDG_MUSIC_DIR:-$HOME/Music}
+cf ${XDG_CONFIG_HOME:-$HOME/.config}
+cb $HOME/.local/bin
+mn /mnt
+wm ~/.config/dwm
