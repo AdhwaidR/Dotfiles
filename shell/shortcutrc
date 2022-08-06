@@ -10,6 +10,7 @@ cf="cd /home/adhwaid/.config " \
 cb="cd /home/adhwaid/.local/bin " \
 mn="cd /mnt " \
 wm="cd ~/.config/dwm " \
+cl="cd ~/Documents/cell " \
 cbd="$EDITOR ~/.config/shell/bm-dirs" \
 cbf="$EDITOR ~/.config/shell/bm-files" \
 cfa="$EDITOR ~/.config/shell/aliases" \

@@ -21,24 +21,25 @@ set previewer '~/.config/lf/scope'
 cmd open ${{
     case $(file --mime-type "$(readlink -f $f)" -b) in
 	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
-	image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) setsid -f zathura $fx >/dev/null 2>&1 ;;
+	image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) setsid -f devour zathura $fx >/dev/null 2>&1 ;;
         text/*|application/json|inode/x-empty) $EDITOR $fx;;
 	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
 	image/svg+xml) display -- $f ;;
 	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" |
-		setsid -f sxiv -aio 2>/dev/null | while read -r file; do
+		setsid -f devour sxiv -aio 2>/dev/null | while read -r file; do
 			[ -z "$file" ] && continue
 			lf -remote "send select \"$file\""
 			lf -remote "send toggle"
 		done &
 		;;
 	audio/*) mpv --audio-display=no $f ;;
-	video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
-	application/pdf|application/vnd*|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
+	video/*) setsid -f devour mpv $f -quiet >/dev/null 2>&1 ;;
+	application/pdf|application/vnd*|application/epub*) setsid -f devour zathura $fx >/dev/null 2>&1 ;;
 	application/pgp-encrypted) $EDITOR $fx ;;
         *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
     esac
 }}
+map o open
 
 cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
 map T push :mkdir<space>
@@ -90,6 +91,18 @@ cmd copyto ${{
 }}
 map CC copyto
 
+cmd select-files ${{
+    { echo "$fs"; find -L "$(pwd)" -mindepth 1 -maxdepth 1 -type f; } |
+        if [ "$lf_hidden" = "false" ]; then
+          # remove any hidden files so you only select files you can see.
+          grep -v '/\.[^/]\+$'
+        else
+          cat
+        fi |
+        sed '/^$/d' | sort | uniq -u |
+        xargs -d '\n' -r -I{} lf -remote "send $id toggle {}"
+}}
+map S select-files
 
 cmd setbg "$1"
 map b $setbg $f

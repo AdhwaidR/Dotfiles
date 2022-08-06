@@ -19,14 +19,13 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/goyo.vim'
-Plug 'voldikss/vim-floaterm'
+Plug 'preservim/nerdtree'
 Plug 'vimwiki/vimwiki'
 Plug 'vim-airline/vim-airline'
-Plug 'ap/vim-css-color'
 call plug#end()
 
 " NerdTree Keybinds
-" nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Cntrl T to switch between tabs
 nnoremap <C-t> gt
@@ -43,7 +42,7 @@ set wildmode=longest,list,full
 
 " When shortcut files are updated, renew configs with new material:
 autocmd BufWritePost bm-files,bm-dirs !shortcuts
-" When init.vim files are updated, source the file after saving it:
+" When init.vim file is updated, source the file after saving it:
 autocmd BufWritePost init.vim source %
 
 " Insert Lines Without Going into Insert Mode
@@ -53,14 +52,8 @@ nmap <leader>O O<esc>
 " Check spellings:
 map <leader>s :setlocal spell! <CR>
 
-" Jump to end of word and start editing 
-nnoremap E ea 
-
-" Jump to beginning of word and start editing 
-nnoremap B bi 
-
 " Compile python programs
-map <leader>c :!setsid -f st -e python % <CR> <CR>
+nmap <leader>c :!setsid -f st -e python % <CR> <CR>
 
 " Changing VimWiki's directory
 let g:vimwiki_list = [{'path': '~/.local/share/vimwiki', 'path_html':'~/.local/share/mywiki_html'}]

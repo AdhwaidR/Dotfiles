@@ -12,6 +12,8 @@ Control-l: clear-screen
 Control-a: beginning-of-line
 Control-e: end-of-line
 Control-k: kill-line
+Control-w: forward-word
+Control-b: backward-word
 
 set keymap vi-insert
 # these are for vi-insert mode
@@ -19,4 +21,6 @@ Control-l: clear-screen
 Control-a: beginning-of-line
 Control-e: end-of-line
 Control-k: kill-line
+Control-w: forward-word
+Control-b: backward-word
 $endif

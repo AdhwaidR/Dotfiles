@@ -1,7 +1,10 @@
-
+# Direcotry navigation settings
 setopt autocd
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+
 source ~/.config/shell/aliases
-# source ~/.config/shell/zshnameddirrc
 source ~/.config/shell/shortcutrc
 
 # Colors and Prompt
@@ -56,6 +59,16 @@ bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
 
+# Surround
+autoload -Uz surround
+zle -N delete-surround surround
+zle -N add-surround surround
+zle -N change-surround surround
+bindkey -M vicmd cz change-surround
+bindkey -M vicmd dz delete-surround
+bindkey -M vicmd yz add-surround
+bindkey -M visual S add-surround
+
 # Change & Delete Inner & Outer quotes, brackets, parantheses etc. 
 autoload -Uz select-bracketed select-quoted
 zle -N select-quoted
@@ -86,6 +99,9 @@ bindkey -s '^o' '^ulfcd\n'
 
 # Use delete key to delte character to the right
 bindkey '^[[P' delete-char
+
+# ZSH System Clipboard
+source ~/.local/share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh
 
 # Syntax Highlighting
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 

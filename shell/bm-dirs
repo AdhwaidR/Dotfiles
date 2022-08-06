@@ -9,3 +9,4 @@ cf ${XDG_CONFIG_HOME:-$HOME/.config}
 cb $HOME/.local/bin
 mn /mnt
 wm ~/.config/dwm
+cl ~/Documents/cell
