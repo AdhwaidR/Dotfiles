@@ -22,11 +22,7 @@ alias mbsync="mbsync -c ~/.config/isync/mbsyncrc"
 alias lf='lfub'
 alias p='cd -'
 alias d='dirs -v'
-
-# Directory stack navigation
-
-for index ({1..9}) alias "$index"="cd +${index}"; unset index
-
+alias ed='ed -v -p ':' '
 # Git Aliases
 alias gs="git status"
 alias ga="git add"

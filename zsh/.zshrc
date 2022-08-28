@@ -4,19 +4,21 @@ setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
 
-source ~/.config/shell/aliases
-source ~/.config/shell/shortcutrc
+source "$HOME/.config/shell/aliases"
+source "$HOME/.config/shell/shortcutrc"
+source "$HOME/.config/shell/zshnameddirrc"
 
 # Colors and Prompt
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%1~%{$fg[red]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%1d%{$fg[red]%}]%{$reset_color%}$%b "
 
 # Append history immediately and other history settings
 setopt INC_APPEND_HISTORY
 setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_SPACE
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
+HISTFILE="$HOME/.cache/zsh/history"
 
 # Vi Mode
 bindkey -v 
@@ -55,19 +57,10 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
-bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M vicmd '^e' edit-command-line
+bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M visual '^[[P' vi-delete
 
-# Surround
-autoload -Uz surround
-zle -N delete-surround surround
-zle -N add-surround surround
-zle -N change-surround surround
-bindkey -M vicmd cz change-surround
-bindkey -M vicmd dz delete-surround
-bindkey -M vicmd yz add-surround
-bindkey -M visual S add-surround
 
 # Change & Delete Inner & Outer quotes, brackets, parantheses etc. 
 autoload -Uz select-bracketed select-quoted
@@ -83,6 +76,16 @@ for km in vicmd; do
   done
 done
 
+# Surround
+autoload -Uz surround
+zle -N delete-surround surround
+zle -N add-surround surround
+zle -N change-surround surround
+bindkey -M vicmd z change-surround
+bindkey -M vicmd Z delete-surround
+bindkey -M vicmd S add-surround
+bindkey -M visual S add-surround
+
 # Change directories using lf
 lfcd () {
     tmp="$(mktemp)"
@@ -93,6 +96,9 @@ lfcd () {
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
+
+# Directory stack navigation
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 # Use Ctrl O to change directories using lf
 bindkey -s '^o' '^ulfcd\n'

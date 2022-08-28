@@ -9,6 +9,7 @@ hash -d cf=/home/adhwaid/.config
 hash -d cb=/home/adhwaid/.local/bin 
 hash -d mn=/mnt 
 hash -d wm=~/.config/dwm 
+hash -d cl=~/Documents/cell 
 hash -d cbd=~/.config/shell/bm-dirs 
 hash -d cbf=~/.config/shell/bm-files 
 hash -d cfa=~/.config/shell/aliases 
