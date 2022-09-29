@@ -1,2 +1,4 @@
 import readline
+import rlcompleter
 readline.write_history_file = lambda *args: None
+readline.parse_and_bind("tab: complete")
