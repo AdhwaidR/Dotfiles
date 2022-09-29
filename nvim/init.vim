@@ -14,6 +14,7 @@ syntax on
 set encoding=utf-8
 set guicursor+=a:blinkon1 "Different cursors in different modes
 set splitbelow splitright
+set exrc
 
 call plug#begin()
 Plug 'tpope/vim-commentary'
@@ -56,8 +57,8 @@ autocmd BufWritePost bm-files,bm-dirs !shortcuts
 " autocmd BufWritePost init.vim source %
 
 " Insert Lines Without Going into Insert Mode
-nmap <leader>o o<esc>
-nmap <leader>O O<esc>
+nmap <leader>o o<esc>k
+nmap <leader>O O<esc>j
 
 " Check spellings:
 map <leader>s :setlocal spell! <CR>
@@ -71,22 +72,17 @@ map <leader>s :setlocal spell! <CR>
 " Runs a script that cleans out tex build files whenever I close out of a .tex file.
 	autocmd VimLeave *.tex !texclear %
 
-" fun! TrimWhitespace()
-" 	let l:save = winview()
-" 	keeppatterns %s/\s\+$//e
-" 	call winrestview(l:save)
-" endfun
-
-" augroup ADHWAID
-" 	autocmd!
-" 	autocmd BufWritePre * :call TrimWhitespace()
-" augroup end
-
 " Move stuff around in visual mode up or down a line
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '>-2<CR>gv=gv
 
-" Changing VimWiki's directory
-let g:vimwiki_list = [{'path': '~/.local/share/vimwiki', 'path_html':'~/.local/share/mywiki_html'}]
+" Changing VimWiki's directory & Syntax
+let g:vimwiki_list = [{'path': '~/.local/share/vimwiki', 'path_html':'~/.local/share/mywiki_html', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+
+" Filetypes
+autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
+autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
+autocmd BufRead,BufNewFile *.tex set filetype=tex
 
 source ~/.config/nvim/shortcuts.vim
