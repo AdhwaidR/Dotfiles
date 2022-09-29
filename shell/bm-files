@@ -1,8 +1,10 @@
 cbd ~/.config/shell/bm-dirs
 cbf ~/.config/shell/bm-files
 cfa ~/.config/shell/aliases
-csb ~/.config/dwmblocks/config.h
 czp ~/.config/shell/profile
 cas ~/.config/shell/aliases
 cfv ~/.config/nvim/init.vim
+cfl ~/.config/lf/lfrc
+csb ~/.local/src/dwmblocks/config.h
 cfz $ZDOTDIR/.zshrc
+cfe ~/.local/bin/emojis
