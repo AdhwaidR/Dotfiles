@@ -3,17 +3,28 @@ set editing-mode vi
 $if mode=vi
 
 set show-mode-in-prompt on
-# set vi-ins-mode-string \1\e[6 q\2
-# set vi-cmd-mode-string \1\e[2 q\2
+set vi-ins-mode-string \1\e[6 q\2
+set vi-cmd-mode-string \1\e[2 q\2
+
+# Color files by types
+# Note that this may cause completion text blink in some terminals (e.g. xterm).
+set colored-stats On
+# Append char to indicate type
+set visible-stats On
+# Mark symlinked directories
+set mark-symlinked-directories On
+# Color the common prefix
+set colored-completion-prefix On
+# Color the common prefix in menu-complete
+set menu-complete-display-prefix On
+set completion-ignore-case On
+set show-all-if-unmodified on
 
 set keymap vi-command
 # these are for vi-command mode
 Control-l: clear-screen
-Control-a: beginning-of-line
-Control-e: end-of-line
-Control-k: kill-line
-Control-w: forward-word
-Control-b: backward-word
+j: history-search-forward
+k: history-search-backward
 
 set keymap vi-insert
 # these are for vi-insert mode
@@ -23,4 +34,9 @@ Control-e: end-of-line
 Control-k: kill-line
 Control-w: forward-word
 Control-b: backward-word
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"Control-^H": backward-kill-word
+"Control-^[[M": kill-word
+
 $endif

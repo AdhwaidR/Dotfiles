@@ -103,8 +103,14 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 # Use Ctrl O to change directories using lf
 bindkey -s '^o' '^ulfcd\n'
 
-# Use delete key to delte character to the right
-bindkey '^[[P' delete-char
+
+bindkey '^[[P' delete-char # Use delete key to delte character to the right
+bindkey '^[[H' beginning-of-line # Home key fix
+bindkey '^[[4~' end-of-line # End key fix
+bindkey '^[[1;5D' backward-word # Ctrl + left arrow
+bindkey '^[[1;5C' forward-word # Ctrl + right arrow
+bindkey "^H" backward-kill-word # Ctrl + backspace
+bindkey "^[[M" kill-word # Ctrl + delete
 
 # ZSH System Clipboard
 source ~/.local/share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh
