@@ -7,6 +7,7 @@ setopt PUSHD_SILENT
 source "$HOME/.config/shell/aliases"
 source "$HOME/.config/shell/shortcutrc"
 source "$HOME/.config/shell/zshnameddirrc"
+eval "$(dircolors -b $HOME/.config/shell/dircolours)"
 
 # Colors and Prompt
 autoload -U colors && colors
@@ -103,6 +104,21 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 # Use Ctrl O to change directories using lf
 bindkey -s '^o' '^ulfcd\n'
 
+zshcache_time="$(date +%s%N)"
+
+autoload -Uz add-zsh-hook
+
+rehash_precmd() {
+  if [[ -a /var/cache/zsh/pacman ]]; then
+    local paccache_time="$(date -r /var/cache/zsh/pacman +%s%N)"
+    if (( zshcache_time < paccache_time )); then
+      rehash
+      zshcache_time="$paccache_time"
+    fi
+  fi
+}
+
+add-zsh-hook -Uz precmd rehash_precmd
 
 bindkey '^[[P' delete-char # Use delete key to delte character to the right
 bindkey '^[[H' beginning-of-line # Home key fix
@@ -111,6 +127,8 @@ bindkey '^[[1;5D' backward-word # Ctrl + left arrow
 bindkey '^[[1;5C' forward-word # Ctrl + right arrow
 bindkey "^H" backward-kill-word # Ctrl + backspace
 bindkey "^[[M" kill-word # Ctrl + delete
+bindkey "^[[A" history-search-backward 
+bindkey "^[[B" history-search-forward 
 
 # ZSH System Clipboard
 source ~/.local/share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh
