@@ -1,3 +1,6 @@
+# For the bash and the python shells
+# This file enables vi mode and some other convenient keybindings
+# in both shells.
 $include /etc/inputrc
 set editing-mode vi
 $if mode=vi
@@ -36,7 +39,7 @@ Control-w: forward-word
 Control-b: backward-word
 "\e[A": history-search-backward
 "\e[B": history-search-forward
-"Control-^H": backward-kill-word
-"Control-^[[M": kill-word
+"\C-H": backward-kill-word
+"\C-[[M": kill-word
 
 $endif

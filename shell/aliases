@@ -14,7 +14,7 @@ alias tsm="transmission-remote"
 
 # Colorize commands when possible.
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
+	ls="ls -hNv --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" 
 
@@ -23,9 +23,11 @@ alias lf='lfub'
 alias p='cd -'
 alias d='dirs -v'
 alias ed='ed -v -p ':' '
+
 # Git Aliases
-alias gs="git status"
 alias ga="git add"
-alias gl="git ls-files"
 alias gb="git branch"
 alias gc="git commit -m"
+alias gd="git diff"
+alias gl="git ls-files"
+alias gs="git status"
