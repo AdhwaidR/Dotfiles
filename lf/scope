@@ -28,6 +28,7 @@ case "$(file --dereference --brief --mime-type -- "$1")" in
 	text/* | */xml | application/json) bat --terminal-width "$4" -f "$1" ;;
 	application/zip) unzip -l "$1";;
 	application/x-xz) tar -tf "$1";;
+	application/x-subrip) cat $f ;;
         audio/* | application/octet-stream) mediainfo "$1" || exit 1;;
 	video/* )
 		CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/lf/thumb.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}')"

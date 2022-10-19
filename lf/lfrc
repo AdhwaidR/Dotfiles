@@ -16,6 +16,7 @@ set period 1
 set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
 set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/scope'
+set autoquit
 
 # cmds/functions
 cmd open ${{
@@ -55,7 +56,7 @@ cmd extract ${{
 	read ans
 	[ $ans = "y" ] && aunpack $fx
 }}
-map E extract
+map e extract
 
 cmd delete %{{
 	clear; tput cup $(($(tput lines)/3)); tput bold
@@ -123,7 +124,7 @@ map o open $f
 map O $mimeopen --ask $f
 
 map A rename # at the very end
-map cc push A<c-u> # new rename
+# map cc push A<c-u> # new rename
 map I push A<c-a> # at the very beginning
 map i push A<a-b><a-b><a-f> # before extension
 map a push A<a-b> # after extension
