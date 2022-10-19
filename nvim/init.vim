@@ -31,8 +31,9 @@ colorscheme gruvbox
 " NetRW settings
 let g:netrw_winsize = 18
 let g:netrw_banner = 0
-let g:netrw_browse_split = 4
+" let g:netrw_browse_split = 4
 let g:netrw_altv = 1
+let g:netrw_list_hide="\.pdf$, \.jpe?g$, \.png$ "
 nnoremap <C-n> :Lex<CR>
 
 " Cntrl T to switch between tabs
