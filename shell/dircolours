@@ -218,5 +218,6 @@ EXEC 01;32
 # Other file types
 *.pdf 01;36
 *.tex 01;37
+*.md 01;37
 # Subsequent TERM or COLORTERM entries, can be used to add / override
 # config specific to those matching environment variables.
