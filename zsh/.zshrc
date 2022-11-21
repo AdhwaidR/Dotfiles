@@ -109,13 +109,13 @@ bindkey '^E' end-of-line # Ctrl + e
 bindkey '^B' backward-word # Ctrl + b
 bindkey '^F' forward-word # Ctrl + w
 bindkey '^J' delete-char # Delete key fix
- bindkey "^X" kill-word # Ctrl + x
- bindkey "^W" backward-kill-word # Ctrl + w
-bindkey "^K" kill-line # Ctrl + k to delete to the end of the line
-bindkey "^U" kill-whole-line # Ctrl + u to delete to the end of the line
-# bindkey "^I" backward-kill-line # Ctrl + i to delete to the beginning of the line
-bindkey "^P" history-search-backward 
-bindkey "^N" history-search-forward 
+bindkey '^X' kill-word # Ctrl + x
+bindkey '^W' backward-kill-word # Ctrl + w
+bindkey '^K' kill-line # Ctrl + k to delete to the end of the line
+bindkey '^U' kill-whole-line # Ctrl + u to delete to the end of the line
+bindkey '^Y' backward-kill-line # Ctrl + i to delete to the beginning of the line
+bindkey '^P' history-search-backward 
+bindkey '^N' history-search-forward 
 
 # ZSH System Clipboard
 source ~/.local/share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh
