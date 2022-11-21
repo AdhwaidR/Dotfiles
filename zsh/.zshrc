@@ -25,9 +25,10 @@ HISTFILE="$HOME/.cache/zsh/history"
 bindkey -v 
 export KEYTIMEOUT=1
 
-# Basic auto/tab complete:
+ # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
@@ -57,17 +58,16 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
-bindkey -M vicmd '^e' edit-command-line
+bindkey '^x' edit-command-line
+bindkey -M vicmd '^x' edit-command-line
 bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M visual '^[[P' vi-delete
-
 
 # Change & Delete Inner & Outer quotes, brackets, parantheses etc. 
 autoload -Uz select-bracketed select-quoted
 zle -N select-quoted
 zle -N select-bracketed
-for km in vicmd; do
+for km in visual viopp; do
   bindkey -M $km -- '-' vi-up-line-or-history
   for c in {a,i}${(s..)^:-\'\"\`\|,./:;=+@}; do
     bindkey -M $km $c select-quoted
@@ -104,31 +104,18 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 # Use Ctrl O to change directories using lf
 bindkey -s '^o' '^ulfcd\n'
 
-zshcache_time="$(date +%s%N)"
-
-autoload -Uz add-zsh-hook
-
-rehash_precmd() {
-  if [[ -a /var/cache/zsh/pacman ]]; then
-    local paccache_time="$(date -r /var/cache/zsh/pacman +%s%N)"
-    if (( zshcache_time < paccache_time )); then
-      rehash
-      zshcache_time="$paccache_time"
-    fi
-  fi
-}
-
-add-zsh-hook -Uz precmd rehash_precmd
-
-bindkey '^[[P' delete-char # Use delete key to delte character to the right
-bindkey '^[[H' beginning-of-line # Home key fix
-bindkey '^[[4~' end-of-line # End key fix
-bindkey '^[[1;5D' backward-word # Ctrl + left arrow
-bindkey '^[[1;5C' forward-word # Ctrl + right arrow
-bindkey "^H" backward-kill-word # Ctrl + backspace
-bindkey "^[[M" kill-word # Ctrl + delete
-bindkey "^[[A" history-search-backward 
-bindkey "^[[B" history-search-forward 
+bindkey '^A' beginning-of-line # Ctrl + a
+bindkey '^E' end-of-line # Ctrl + e
+bindkey '^B' backward-word # Ctrl + b
+bindkey '^F' forward-word # Ctrl + w
+bindkey '^J' delete-char # Delete key fix
+ bindkey "^X" kill-word # Ctrl + x
+ bindkey "^W" backward-kill-word # Ctrl + w
+bindkey "^K" kill-line # Ctrl + k to delete to the end of the line
+bindkey "^U" kill-whole-line # Ctrl + u to delete to the end of the line
+# bindkey "^I" backward-kill-line # Ctrl + i to delete to the beginning of the line
+bindkey "^P" history-search-backward 
+bindkey "^N" history-search-forward 
 
 # ZSH System Clipboard
 source ~/.local/share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh
