@@ -2,7 +2,7 @@
 export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 
 export EDITOR="nvim"
-export BROWSER="brave"
+export BROWSER="librewolf"
 export TERMINAL="st"
 
 # Home Directory Cleanup
