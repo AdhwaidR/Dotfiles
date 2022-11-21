@@ -52,8 +52,8 @@ xcompmgr &
 remaps &
 mpd &
 dunst &
-transmission-daemon &
+# transmission-daemon &
 dwmblocks &
 unclutter &
-setbg $HOME/Pictures
+setbg $HOME/Pictures/wallpapers
 exec dwm
