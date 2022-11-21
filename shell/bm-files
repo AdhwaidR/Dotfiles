@@ -1,8 +1,7 @@
-cbd $HOME/.config/shell/bm-dirs
-cbf $HOME/.config/shell/bm-files
-cfa $HOME/.config/shell/aliases
-czp $HOME/.config/shell/profile
-cas $HOME/.config/shell/aliases
+bd $HOME/.config/shell/bm-dirs
+bf $HOME/.config/shell/bm-files
+fa $HOME/.config/shell/aliases
+zp $HOME/.config/shell/profile
 cfv $HOME/.config/nvim/init.vim
 cfl $HOME/.config/lf/lfrc
 csb $HOME/.local/src/dwmblocks/config.h
