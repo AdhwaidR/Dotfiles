@@ -86,4 +86,4 @@ autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markd
 autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 autocmd BufRead,BufNewFile *.tex set filetype=tex
 
-source ~/.config/nvim/shortcuts.vim
+source $HOME/.config/nvim/shortcuts.vim
