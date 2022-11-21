@@ -1,0 +1,13 @@
+[Default Applications]
+x-scheme-handler/magnet=torrent.desktop;
+application/x-bittorrent=torrent.desktop;
+application/pdf=pdf.desktop;
+image/png=img.desktop;
+image/jpeg=img.desktop;
+image/gif=img.desktop;
+video/x-matroska=video.desktop
+inode/directory=file.desktop
+x-scheme-handler/mailto=brave-browser.desktop
+
+[Added Associations]
+application/x-subrip=nvim.desktop;
