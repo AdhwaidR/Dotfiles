@@ -37,20 +37,20 @@ let g:netrw_list_hide="\.pdf$, \.jpe?g$, \.png$ "
 nnoremap <C-n> :Lex<CR>
 
 " Cntrl T to switch between tabs
-nnoremap <C-t> gt
-nnoremap <C-T> gT
+	nnoremap <C-t> gt
+	nnoremap <C-T> gT
 
-" Map S to ys
-nmap S ys
+" Map S to ys (surround plugin)
+	nmap S ys
 
 " Split Navigation
-map <C-j> <C-w>w
-map <C-k> <C-w>W
+	map <C-j> <C-w>w
+	map <C-k> <C-w>W
 
 " Disable Auto-Comment
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Enable Auto-Complete in Command Mode
-set wildmode=longest,list,full
+	set wildmode=longest,list,full
 
 " When shortcut files are updated, renew configs with new material:
 autocmd BufWritePost bm-files,bm-dirs !shortcuts
@@ -58,11 +58,11 @@ autocmd BufWritePost bm-files,bm-dirs !shortcuts
 " autocmd BufWritePost init.vim source %
 
 " Insert Lines Without Going into Insert Mode
-nmap <leader>o o<esc>k
-nmap <leader>O O<esc>j
+	nmap <leader>o o<esc>k
+	nmap <leader>O O<esc>j
 
 " Check spellings:
-map <leader>s :setlocal spell! <CR>
+	map <leader>s :setlocal spell! <CR>
 
 " Compile document, be it groff/LaTeX/markdown/etc.
 	map <leader>c :w! \| !compiler "%:p"<CR>
@@ -74,8 +74,16 @@ map <leader>s :setlocal spell! <CR>
 	autocmd VimLeave *.tex !texclear %
 
 " Move stuff around in visual mode up or down a line
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '>-2<CR>gv=gv
+	vnoremap J :m '>+1<CR>gv=gv
+	vnoremap K :m '>-2<CR>gv=gv
+
+" Shell like bindings for insert mode
+imap <C-d> <C-o>de
+imap <C-b> <C-o>b
+imap <C-f> <C-o>w
+imap <C-a> <C-o>^
+imap <C-e> <C-o>$
+imap <C-x> <C-o>x
 
 " Changing VimWiki's directory & Syntax
 let g:vimwiki_list = [{'path': '~/.local/share/vimwiki', 'path_html':'~/.local/share/mywiki_html', 'syntax': 'markdown', 'ext': '.md'}]
