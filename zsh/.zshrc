@@ -108,12 +108,11 @@ bindkey '^A' beginning-of-line # Ctrl + a
 bindkey '^E' end-of-line # Ctrl + e
 bindkey '^B' backward-word # Ctrl + b
 bindkey '^F' forward-word # Ctrl + w
-bindkey '^J' delete-char # Delete key fix
+bindkey '^[[P' delete-char # Delete key fix
 bindkey '^X' kill-word # Ctrl + x
 bindkey '^W' backward-kill-word # Ctrl + w
 bindkey '^K' kill-line # Ctrl + k to delete to the end of the line
-bindkey '^U' kill-whole-line # Ctrl + u to delete to the end of the line
-bindkey '^Y' backward-kill-line # Ctrl + i to delete to the beginning of the line
+bindkey '^U' backward-kill-line # Ctrl + u to delete to the beginning of the line
 bindkey '^P' history-search-backward 
 bindkey '^N' history-search-forward 
 
