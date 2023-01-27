@@ -17,6 +17,8 @@ set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
 set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/scope'
 set autoquit
+set incsearch
+set mouse
 
 # cmds/functions
 cmd open ${{
@@ -27,7 +29,7 @@ cmd open ${{
 	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
 	image/svg+xml) display -- $f ;;
 	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" |
-		setsid -f devour sxiv -aio 2>/dev/null | while read -r file; do
+		setsid -f devour nsxiv -aio 2>/dev/null | while read -r file; do
 			[ -z "$file" ] && continue
 			lf -remote "send select \"$file\""
 			lf -remote "send toggle"
@@ -56,7 +58,7 @@ cmd extract ${{
 	read ans
 	[ $ans = "y" ] && aunpack $fx
 }}
-map e extract
+map E extract
 
 cmd delete %{{
 	clear; tput cup $(($(tput lines)/3)); tput bold
@@ -113,15 +115,18 @@ map B bulkrename
 
 # Bindings
 map <c-f> $lf -remote "send $id select '$(fzf)'"
-# map gh
 map gg top
 map <c-r> reload
+map <c-c> clear
 map <c-s> set hidden!
 map <enter> shell
 map x $$f
 map X !$f
 map o open $f
 map O $mimeopen --ask $f
+map c
+map e
+map gh 
 
 map A rename # at the very end
 # map cc push A<c-u> # new rename
@@ -129,12 +134,14 @@ map I push A<c-a> # at the very beginning
 map i push A<a-b><a-b><a-f> # before extension
 map a push A<a-b> # after extension
 
-map <c-e> down
-map <c-y> up
 map V push :!nvim<space>
 
 map W $setsid -f $TERMINAL >/dev/null 2>&1
 
 map Y $printf "%s" "$fx" | xclip -selection clipboard
+
+map <m-down> down
+map <m-up> up
+map <m-1> open
 
 source "~/.config/lf/shortcutrc"
