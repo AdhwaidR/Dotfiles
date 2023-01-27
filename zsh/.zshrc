@@ -4,12 +4,19 @@ setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
 
+# Do not highlight when pasting
+zle_highlight=('paste:none')
+
+# Disable terminal freeze with Ctrl+s
+stty stop undef
+
+# Sourcing shortcuts
 source "$HOME/.config/shell/aliases"
 source "$HOME/.config/shell/shortcutrc"
 source "$HOME/.config/shell/zshnameddirrc"
-eval "$(dircolors -b $HOME/.config/shell/dircolours)"
 
 # Colors and Prompt
+eval "$(dircolors -b $HOME/.config/shell/dircolours)"
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%1d%{$fg[red]%}]%{$reset_color%}$%b "
 
@@ -28,6 +35,7 @@ export KEYTIMEOUT=1
  # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zmodload zsh/complist
 compinit
@@ -104,12 +112,13 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 # Use Ctrl O to change directories using lf
 bindkey -s '^o' '^ulfcd\n'
 
+# Keybindings that are mostly similar to the original UNIX terminal key board shortcuts
 bindkey '^A' beginning-of-line # Ctrl + a
 bindkey '^E' end-of-line # Ctrl + e
 bindkey '^B' backward-word # Ctrl + b
 bindkey '^F' forward-word # Ctrl + w
 bindkey '^[[P' delete-char # Delete key fix
-bindkey '^X' kill-word # Ctrl + x
+bindkey '^[[M' kill-word # Ctrl + x
 bindkey '^W' backward-kill-word # Ctrl + w
 bindkey '^K' kill-line # Ctrl + k to delete to the end of the line
 bindkey '^U' backward-kill-line # Ctrl + u to delete to the beginning of the line
@@ -117,7 +126,7 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward 
 
 # ZSH System Clipboard
-source ~/.local/share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh
+source $HOME/.local/share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh
 
 # Syntax Highlighting
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 
