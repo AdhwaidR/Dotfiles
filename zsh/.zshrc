@@ -3,6 +3,7 @@ setopt autocd
 setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
+setopt prompt_subst
 
 # Do not highlight when pasting
 zle_highlight=('paste:none')
@@ -18,7 +19,7 @@ source "$HOME/.config/shell/zshnameddirrc"
 # Colors and Prompt
 eval "$(dircolors -b $HOME/.config/shell/dircolours)"
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%1d%{$fg[red]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%1d%{$fg[red]%}]%b$ "
 
 # Append history immediately and other history settings
 setopt INC_APPEND_HISTORY
@@ -64,7 +65,7 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-# Edit line in vim with ctrl-e:
+# Edit line in vim with ctrl-x:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^x' edit-command-line
 bindkey -M vicmd '^x' edit-command-line
@@ -113,15 +114,13 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 bindkey -s '^o' '^ulfcd\n'
 
 # Keybindings that are mostly similar to the original UNIX terminal key board shortcuts
-bindkey '^A' beginning-of-line # Ctrl + a
-bindkey '^E' end-of-line # Ctrl + e
+bindkey '^A' beginning-of-line # Ctrl + a OG UNIX
+bindkey '^E' end-of-line # Ctrl + e OG UNIX
 bindkey '^B' backward-word # Ctrl + b
 bindkey '^F' forward-word # Ctrl + w
 bindkey '^[[P' delete-char # Delete key fix
-bindkey '^[[M' kill-word # Ctrl + x
-bindkey '^W' backward-kill-word # Ctrl + w
-bindkey '^K' kill-line # Ctrl + k to delete to the end of the line
-bindkey '^U' backward-kill-line # Ctrl + u to delete to the beginning of the line
+bindkey '^W' backward-kill-word # Ctrl + w OG UNIX
+bindkey '^U' backward-kill-line # Ctrl + u OG UNIX
 bindkey '^P' history-search-backward 
 bindkey '^N' history-search-forward 
 
