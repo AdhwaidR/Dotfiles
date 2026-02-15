@@ -15,11 +15,12 @@ stty stop undef
 source "$HOME/.config/shell/aliases"
 source "$HOME/.config/shell/shortcutrc"
 source "$HOME/.config/shell/zshnameddirrc"
+eval "$(dircolors -b $HOME/.config/shell/dircolours)"
 
 # Colors and Prompt
-eval "$(dircolors -b $HOME/.config/shell/dircolours)"
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%1d%{$fg[red]%}]%b$ "
+# PS1="%n%%@%M%1d%# "
 
 # Append history immediately and other history settings
 setopt INC_APPEND_HISTORY
@@ -107,20 +108,22 @@ lfcd () {
     fi
 }
 
-# Directory stack navigation
-for index ({1..9}) alias "$index"="cd +${index}"; unset index
-
 # Use Ctrl O to change directories using lf
 bindkey -s '^o' '^ulfcd\n'
 
+# Directory stack navigation
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
+
+
 # Keybindings that are mostly similar to the original UNIX terminal key board shortcuts
 bindkey '^A' beginning-of-line # Ctrl + a OG UNIX
-bindkey '^E' end-of-line # Ctrl + e OG UNIX
-bindkey '^B' backward-word # Ctrl + b
-bindkey '^F' forward-word # Ctrl + w
-bindkey '^[[P' delete-char # Delete key fix
-bindkey '^W' backward-kill-word # Ctrl + w OG UNIX
+bindkey '^E' vi-end-of-line # Ctrl + e OG UNIX
+bindkey '^B' backward-char # Ctrl + b
+bindkey '^F' forward-char # Ctrl + f
+bindkey '^H' backward-delete-char # Ctrl + h
+bindkey '^W' backward-delete-word #Ctrl +w OG UNIX
 bindkey '^U' backward-kill-line # Ctrl + u OG UNIX
+bindkey '^[[P' delete-char # Delete key fix
 bindkey '^P' history-search-backward 
 bindkey '^N' history-search-forward 
 
