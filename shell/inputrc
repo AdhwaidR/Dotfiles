@@ -20,14 +20,15 @@ set mark-symlinked-directories On
 set colored-completion-prefix On
 # Color the common prefix in menu-complete
 set menu-complete-display-prefix On
-set completion-ignore-case On
+set completion-ignore-case on
 set show-all-if-unmodified on
+set enable-bracketed-paste off
 
 set keymap vi-command
 # these are for vi-command mode
 Control-l: clear-screen
-j: history-search-forward
-k: history-search-backward
+n: history-search-forward
+p: history-search-backward
 
 set keymap vi-insert
 # these are for vi-insert mode
@@ -35,8 +36,8 @@ Control-l: clear-screen
 Control-a: beginning-of-line
 Control-e: end-of-line
 Control-k: kill-line
-Control-w: forward-word
-Control-b: backward-word
+Control-f: forward-char
+Control-b: backward-char
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 "\C-W": backward-kill-word
