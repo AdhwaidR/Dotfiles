@@ -29,6 +29,10 @@ alias ga="git add"
 alias gb="git branch"
 alias gc="git commit -m"
 alias gd="git diff"
+alias gdn="git diff --name-only"
 alias gls="git ls-files"
-alias glo="git log"
+alias glo="git lg"
 alias gs="git status"
+
+# Docker Aliases
+alias dk="docker"
