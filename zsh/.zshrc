@@ -19,8 +19,10 @@ eval "$(dircolors -b $HOME/.config/shell/dircolours)"
 
 # Colors and Prompt
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%1d%{$fg[red]%}]%b$ "
-# PS1="%n%%@%M%1d%# "
+case "$TERM" in
+	st-256color | xterm-256color) PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%1d%{$fg[red]%}]%b$ " ;;
+	linux|dumb) PS1="%n%%@%M %1d%# " ;;
+esac 
 
 # Append history immediately and other history settings
 setopt INC_APPEND_HISTORY
@@ -126,6 +128,7 @@ bindkey '^U' backward-kill-line # Ctrl + u OG UNIX
 bindkey '^[[P' delete-char # Delete key fix
 bindkey '^P' history-search-backward 
 bindkey '^N' history-search-forward 
+
 
 # ZSH System Clipboard
 source $HOME/.local/share/zsh/zsh-system-clipboard/zsh-system-clipboard.zsh
