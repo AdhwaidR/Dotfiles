@@ -1,8 +1,8 @@
 bd $HOME/.config/shell/bm-dirs
 bf $HOME/.config/shell/bm-files
-fa $HOME/.config/shell/aliases
 zp $HOME/.config/shell/profile
-cfv $HOME/.config/nvim/init.vim
+cfa $HOME/.config/shell/aliases
+cfv $HOME/.config/nvim/init.lua
 cfl $HOME/.config/lf/lfrc
 csb $HOME/.local/src/dwmblocks/config.h
 cfz $ZDOTDIR/.zshrc
