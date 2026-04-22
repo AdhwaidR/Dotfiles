@@ -19,6 +19,7 @@ set previewer '~/.config/lf/scope'
 set autoquit
 set incsearch
 set mouse
+# set relativenumber
 
 # cmds/functions
 cmd open ${{
@@ -143,5 +144,6 @@ map Y $printf "%s" "$fx" | xclip -selection clipboard
 map <m-down> down
 map <m-up> up
 map <m-1> open
+map <m-2> updir
 
 source "~/.config/lf/shortcutrc"
