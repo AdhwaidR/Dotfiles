@@ -2,7 +2,7 @@
 export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 
 export EDITOR="nvim"
-export BROWSER="brave"
+export BROWSER="firefox"
 export TERMINAL="st"
 
 # Home Directory Cleanup
@@ -17,13 +17,23 @@ export INPUTRC="$HOME/.config/shell/inputrc"
 export CARGO_HOME="$HOME/.local/share/cargo"
 export PYTHONSTARTUP="$HOME/.config/python/pythonrc"
 export GOPATH="$HOME/.local/share/go"
-export LESS=-R
-#Colors for Man Pages
-export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
-export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
-export LESS_TERMCAP_me="$(printf '%b' '[0m')"
-export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
-export LESS_TERMCAP_se="$(printf '%b' '[0m')"
-export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
-export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
+export DOCKER_CONFIG="$HOME/docker"
+export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
+export GROFF_NO_SGR=1
+export LESS="R"
+# Colors for Man Pages
+export LESS_TERMCAP_mb=$'\e[1;31m'
+export LESS_TERMCAP_md=$'\e[1;31m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[1;33;44m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[4;1;32m'
+export LESS_TERMCAP_mr=$'\e[7m'
+export LESS_TERMCAP_mh=$'\e[2m'
+export LESS_TERMCAP_ZN=$'\e[74m'
+export LESS_TERMCAP_ZV=$'\e[75m'
+export LESS_TERMCAP_ZO=$'\e[73m'
+export LESS_TERMCAP_ZW=$'\e[75m'
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
+export QT_QPA_PLATFORMTHEME="gtk2" # Have QT use gtk2 theme.
