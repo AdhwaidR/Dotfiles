@@ -3,6 +3,7 @@
 
 shopt -s autocd
 shopt -s globstar
+shopt -s extglob
 shopt -s histappend
 stty -ixon
 
